@@ -1,81 +1,126 @@
 import { motion } from "framer-motion"
-import { Check } from "lucide-react"
 
-const plans = [
+const editions = [
   {
-    name: "Старт",
-    price: "1 200",
-    period: " руб/мес",
-    description: "Для личного портфолио",
-    features: ["5 страниц", "Свой домен", "Базовая аналитика", "Поддержка по email"],
+    name: "Стандарт",
+    price: "790",
+    description: "Блокнот формата A5, 80 листов, мягкая обложка с авторским принтом.",
+    features: [
+      "Формат A5",
+      "80 листов, 80 г/м²",
+      "Мягкая обложка",
+      "Авторский принт Scriptonite",
+      "Пронумерованный экземпляр",
+    ],
+    highlighted: false,
+    cta: "Заказать",
   },
   {
-    name: "Про",
-    price: "2 900",
-    period: " руб/мес",
-    description: "Для растущих авторов",
-    features: ["Безлимит страниц", "Приоритет поддержки", "Расширенная аналитика", "Свой брендинг", "Работа в команде"],
-    popular: true,
+    name: "Коллекционный",
+    price: "1 490",
+    description: "Лимитированный A5 в твёрдой обложке с золотым тиснением. Всего 100 штук.",
+    features: [
+      "Формат A5",
+      "120 листов, 100 г/м²",
+      "Твёрдая обложка с тиснением",
+      "Золотые детали оформления",
+      "Сертификат подлинности",
+      "Именная нумерация",
+    ],
+    highlighted: true,
+    cta: "Заказать коллекционный",
+  },
+  {
+    name: "Большой",
+    price: "990",
+    description: "Просторный формат A4 для тех, кому нужно больше места для мыслей.",
+    features: [
+      "Формат A4",
+      "80 листов, 80 г/м²",
+      "Мягкая обложка",
+      "Авторский принт Scriptonite",
+      "Пронумерованный экземпляр",
+    ],
+    highlighted: false,
+    cta: "Заказать",
   },
 ]
 
 export function PricingSection() {
   return (
-    <section className="bg-secondary px-6 py-24">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          className="text-center mb-16"
+    <section className="bg-background px-6 py-24">
+      <div className="max-w-6xl mx-auto">
+        <motion.p
+          className="text-muted-foreground text-sm uppercase tracking-widest mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-5xl font-serif text-foreground">Простые и понятные цены</h2>
-          <p className="text-muted-foreground mt-4 max-w-md mx-auto">Начните бесплатно, платите когда готовы.</p>
-        </motion.div>
+          Выбери свой экземпляр
+        </motion.p>
+        <motion.h2
+          className="text-3xl md:text-5xl font-serif text-foreground mb-16 max-w-xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          Каждый блокнот — часть истории.
+        </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-          {plans.map((plan, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {editions.map((edition, i) => (
             <motion.div
               key={i}
-              className={`relative bg-background rounded-xl p-8 ticket-edge ${plan.popular ? "ring-2 ring-primary" : ""}`}
+              className={`rounded-xl p-8 flex flex-col relative overflow-hidden ${
+                edition.highlighted
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-foreground"
+              }`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              data-clickable
+              whileHover={{ scale: 0.99 }}
             >
-              {plan.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-lime text-foreground text-xs font-medium px-3 py-1 rounded-full">
-                  Популярный
-                </span>
+              {edition.highlighted && (
+                <div className="absolute top-4 right-4">
+                  <span className="text-xs uppercase tracking-widest bg-accent text-accent-foreground px-3 py-1 rounded-full font-medium">
+                    Хит
+                  </span>
+                </div>
               )}
 
-              <div className="text-center pb-6 border-b border-dashed border-border">
-                <h3 className="font-serif text-xl text-foreground">{plan.name}</h3>
-                <div className="mt-4 flex items-baseline justify-center gap-1">
-                  <span className="text-4xl md:text-5xl font-serif text-foreground">{plan.price}</span>
-                  <span className="text-muted-foreground">{plan.period}</span>
+              <div className="mb-6">
+                <p className={`text-sm uppercase tracking-widest mb-3 ${edition.highlighted ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                  {edition.name}
+                </p>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-serif font-semibold">{edition.price}</span>
+                  <span className={`text-sm ${edition.highlighted ? "text-primary-foreground/70" : "text-muted-foreground"}`}>₽</span>
                 </div>
-                <p className="text-muted-foreground text-sm mt-2">{plan.description}</p>
+                <p className={`text-sm mt-3 leading-relaxed ${edition.highlighted ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                  {edition.description}
+                </p>
               </div>
 
-              <ul className="mt-6 space-y-3">
-                {plan.features.map((feature, j) => (
-                  <li key={j} className="flex items-center gap-3 text-foreground">
-                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
+              <ul className="space-y-2 flex-1 mb-8">
+                {edition.features.map((feature, j) => (
+                  <li key={j} className="flex items-center gap-3 text-sm">
+                    <span className={`text-xs ${edition.highlighted ? "text-accent" : "text-primary"}`}>✦</span>
+                    {feature}
                   </li>
                 ))}
               </ul>
 
               <button
-                className={`w-full mt-8 py-3 px-6 rounded-lg font-medium transition-colors ${
-                  plan.popular
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "bg-secondary text-foreground hover:bg-accent/30"
+                className={`w-full py-3 rounded-lg font-medium text-sm transition-all hover:opacity-90 ${
+                  edition.highlighted
+                    ? "bg-accent text-accent-foreground"
+                    : "bg-foreground text-background"
                 }`}
               >
-                Начать
+                {edition.cta}
               </button>
             </motion.div>
           ))}

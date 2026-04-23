@@ -2,9 +2,9 @@ import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 
 const images = [
-  "/minimal-architecture-portfolio-with-clean-lines.jpg",
-  "/fashion-photography-editorial-black-and-white.jpg",
-  "/modern-ui-design-portfolio-mockup.jpg",
+  "https://cdn.poehali.dev/projects/107a5fbc-5eb4-4c86-bcc2-a021dfbe4054/files/0e0bb172-853e-4bfa-b68d-8abd96b8db2b.jpg",
+  "https://cdn.poehali.dev/projects/107a5fbc-5eb4-4c86-bcc2-a021dfbe4054/files/c1808a84-7147-4932-854a-8f6fe0fc2847.jpg",
+  "https://cdn.poehali.dev/projects/107a5fbc-5eb4-4c86-bcc2-a021dfbe4054/files/8ffa5c2f-cbf7-4ca5-a3cf-9c9c1fdd3a01.jpg",
 ]
 
 export function HeroSection() {
@@ -26,7 +26,6 @@ export function HeroSection() {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background px-6 py-24"
     >
-      {/* Stacked images */}
       <div className="relative flex items-center justify-center">
         <motion.div
           className="absolute w-[280px] md:w-[320px] aspect-[3/4] rounded-xl overflow-hidden shadow-2xl"
@@ -35,11 +34,7 @@ export function HeroSection() {
           animate={{ clipPath: "inset(0 0 0 0)" }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img
-            src={images[0] || "/placeholder.svg"}
-            alt="Портфолио 1"
-            className="w-full h-full object-cover"
-          />
+          <img src={images[0]} alt="Scriptonite блокнот" className="w-full h-full object-cover" />
         </motion.div>
 
         <motion.div
@@ -49,11 +44,7 @@ export function HeroSection() {
           animate={{ clipPath: "inset(0 0 0 0)" }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img
-            src={images[1] || "/placeholder.svg"}
-            alt="Портфолио 2"
-            className="w-full h-full object-cover"
-          />
+          <img src={images[1]} alt="Scriptonite блокнот" className="w-full h-full object-cover" />
         </motion.div>
 
         <motion.div
@@ -63,11 +54,7 @@ export function HeroSection() {
           animate={{ clipPath: "inset(0 0 0 0)" }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img
-            src={images[2] || "/placeholder.svg"}
-            alt="Портфолио 3"
-            className="w-full h-full object-cover"
-          />
+          <img src={images[2]} alt="Scriptonite блокнот" className="w-full h-full object-cover" />
         </motion.div>
       </div>
 
@@ -78,7 +65,7 @@ export function HeroSection() {
         transition={{ duration: 1, delay: 0.8 }}
       >
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-center text-foreground mix-blend-difference">
-          Ваши работы, <em className="italic">в фокусе</em>.
+          Пиши в темноте,<br /><em className="italic">читай в свете.</em>
         </h1>
       </motion.div>
 

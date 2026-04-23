@@ -2,9 +2,9 @@ import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 
 const showcaseImages = [
-  "/modern-architecture-building-exterior-minimal.jpg",
-  "/fashion-model-editorial-portrait-dramatic-lighting.jpg",
-  "/interior-design-minimalist-living-room-natural-lig.jpg",
+  "https://cdn.poehali.dev/projects/107a5fbc-5eb4-4c86-bcc2-a021dfbe4054/files/ccdae968-941d-4603-bb30-2f1992779f10.jpg",
+  "https://cdn.poehali.dev/projects/107a5fbc-5eb4-4c86-bcc2-a021dfbe4054/files/8d55aa3d-053f-4e27-a016-41969a9713f6.jpg",
+  "https://cdn.poehali.dev/projects/107a5fbc-5eb4-4c86-bcc2-a021dfbe4054/files/0e0bb172-853e-4bfa-b68d-8abd96b8db2b.jpg",
 ]
 
 export function ShowcaseSection() {
@@ -32,6 +32,15 @@ export function ShowcaseSection() {
           Галерея
         </motion.p>
 
+        <motion.h2
+          className="text-3xl md:text-5xl font-serif text-foreground mb-16 max-w-xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          Объект, который хочется держать в руках.
+        </motion.h2>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {showcaseImages.map((src, i) => (
             <motion.div
@@ -50,7 +59,7 @@ export function ShowcaseSection() {
             >
               <motion.img
                 src={src}
-                alt={`Изображение ${i + 1}`}
+                alt={`Scriptonite блокнот ${i + 1}`}
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
